@@ -13,14 +13,25 @@ function initAnimation() {
 
   if (cover.classList.contains("autoplay")) {
     setInterval(() => {
-      index = index < wordsCover.length ? ++index : 0;
-      coverTitle.innerText = wordsCover[index];
-    }, 500);
+      index = index < wordsCover.length - 1 ? ++index : 0;
+
+      let increment = 0.085;
+      let opacity = 0;
+      
+      let instance0 = setInterval(function () {
+        opacity = opacity + increment;
+        coverTitle.innerText = wordsCover[index];
+        coverTitle.style.opacity = opacity;
+        if (opacity > 1) {
+          clearInterval(instance0);
+        }
+      }, 100);
+
+    }, 2500);
   } else {
-    
     window.addEventListener("scrollend", () => {
-      index = index < wordsCover.length ? ++index : 0;
-     
+      index = index < wordsCover.length - 1 ? ++index : 0;
+
       let increment = 0.085;
       let opacity = 0;
 
@@ -33,7 +44,6 @@ function initAnimation() {
         }
       }, 100);
     });
-    
   }
 
   setTimeout(() => {

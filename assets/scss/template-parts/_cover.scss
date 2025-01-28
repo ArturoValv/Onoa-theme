@@ -41,8 +41,13 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: $ldpi) {
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
   }
 
   .title {
