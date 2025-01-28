@@ -1,0 +1,107 @@
+@use "./breakpoints" as *;
+
+.wpforms-form {
+  .wpforms-field-container {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 20px;
+
+    select,
+    option,
+    input,
+    textarea {
+      max-width: 100%;
+      padding: 15px;
+      background-color: transparent;
+      font-family: var(--montserrat);
+      font-size: 2rem;
+      color: rgb(var(--text-color));
+      border-bottom: 1px solid rgb(var(--text-color));
+      border-radius: 0;
+      @media (min-width: $tablet) {
+        font-size: 1.6rem;
+        line-height: 3rem;
+      }
+      &::placeholder {
+        color: rgb(var(--text-color));
+      }
+    }
+
+    .wpforms-field-label {
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 2.4rem;
+    }
+
+    .wpforms-field {
+      max-width: 100%;
+      width: 100%;
+      padding: 0 0;
+      background-color: transparent;
+
+      &.wpforms-field-checkbox {
+        ul {
+          margin: 10px 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+
+          li {
+            width: fit-content;
+            height: fit-content;
+            padding: 5px 10px;
+            position: relative;
+            border: 1.5px solid rgb(var(--light-grey));
+            border-radius: 25px;
+            cursor: pointer;
+
+            &:hover,
+            &.wpforms-selected,
+            &:has(input:checked) {
+              background-color: rgb(var(--primary-color));
+            }
+
+            input {
+              width: 100%;
+              height: 100%;
+              margin: 0;
+              top: 0;
+              left: 0;
+              position: absolute;
+              z-index: 10;
+              opacity: 0;
+              cursor: pointer;
+            }
+
+            label {
+              position: relative;
+              z-index: 0;
+              font-size: 1.6rem;
+              color: rgb(var(--light-grey));
+            }
+          }
+        }
+      }
+    }
+  }
+  .wpforms-submit-container {
+    margin-top: 20px;
+    [type="submit"] {
+      appearance: none;
+      padding: 16px 28px;
+      background-color: rgb(var(--secondary-color));
+      border: none;
+      text-transform: uppercase;
+      font-family: var(--montserrat);
+      font-weight: normal;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(var(--tertiary-color));
+      }
+    }
+  }
+}

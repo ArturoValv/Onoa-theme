@@ -1,0 +1,160 @@
+@use "../../assets/scss/breakpoints" as *;
+
+.block-team {
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(var(--primary-color), 1);
+
+  @media (min-width: $ldpi) {
+    padding: 120px 0;
+  }
+
+  .block__inner {
+    max-width: 1800px;
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .cols {
+    width: 100%;
+    height: 100%;
+    padding: 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 14rem;
+    row-gap: 3rem;
+
+    .col {
+      min-width: 280px;
+      display: flex;
+      align-self: flex-start;
+      justify-content: center;
+      flex: 1 0 calc(75% - 10rem);
+
+      &:first-child {
+        flex: 1 0 calc(25% - 4rem);
+      }
+
+      &:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .block-title {
+        font-family: var(--adore);
+        font-size: 8.2rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: uppercase;
+
+        @media (max-width: 1023px) {
+          font-size: 36px;
+        }
+      }
+
+      .heading,
+      .heading a {
+        font-family: var(--montserrat);
+        font-size: 2.8rem;
+        font-weight: 600;
+        line-height: 3rem;
+        text-transform: uppercase;
+        color: rgba(var(--text-color), 1);
+      }
+
+      .team {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        gap: 6rem;
+
+        .member {
+          min-width: 280px;
+          padding-bottom: 1rem;
+          flex: 1 0 calc(50% - 3rem);
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 1.5rem;
+          border-bottom: 1px solid rgba(var(--text-color), 1);
+
+          a {
+            display: flex;
+            &:hover {
+              color: rgba(0, 0, 0, 1);
+            }
+          }
+
+          .photo {
+            width: 100%;
+            height: 350px;
+            flex: 0 0 100%;
+            display: flex;
+
+            @media (min-width: $ldpi) {
+              height: 550px;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              display: block;
+              object-fit: cover;
+            }
+          }
+
+          .social {
+            margin-bottom: 1.5rem;
+            flex: 0 0 30%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 1rem;
+
+            li {
+              width: 32px;
+              height: 32px;
+              display: flex;
+
+              a {
+                svg {
+                  width: 100%;
+                  height: 100%;
+                  color: rgba(var(--tertiary-color), 1);
+                  fill: rgba(var(--tertiary-color), 1);
+                  stroke: rgba(var(--tertiary-color), 1);
+                }
+
+                &:hover {
+                  svg {
+                    color: rgba(0, 0, 0, 1);
+                    fill: rgba(0, 0, 0, 1);
+                    stroke: rgba(0, 0, 0, 1);
+                  }
+                }
+              }
+            }
+          }
+
+          .info {
+            min-width: 250px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+
+          .position {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}
