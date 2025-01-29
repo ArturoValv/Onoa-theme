@@ -76,4 +76,10 @@
 
         <?php get_template_part("template-parts/cover") ?>
 
+    <?php elseif (get_field('mostrar_portada')): ?>
+
+        <?php get_template_part("template-parts/internal", "banner") ?>
+
+    <?php else: ?>
+
     <?php endif ?>

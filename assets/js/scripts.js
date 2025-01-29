@@ -1,5 +1,3 @@
-const bodyWrapper = document.querySelector("#body-wrapper");
-
 //Header
 const siteHeader = document.querySelector(".site-header");
 const mobileBtn = document.querySelector("#menu-mobile");
@@ -8,16 +6,12 @@ const menuItems = document.querySelectorAll(".main-menu .menu>.menu-item");
 const parentMenuItems = document.querySelectorAll(
   ".main-menu .menu-item-has-children"
 );
-
-//Sections
-const internalBanner = document.querySelector("body section.internal-banner");
+const cover = document.querySelector(".cover-inner");
+const coverBg = document.querySelector(".cover-inner .cover-inner__bg");
 
 document.addEventListener("DOMContentLoaded", () => {
   eventListeners();
   numerateMenuItems();
-
-  //Internal Banner
-  internalBanner && intBannerPositioning();
 });
 
 function eventListeners() {
@@ -32,6 +26,9 @@ function eventListeners() {
   });
 
   window.addEventListener("scroll", fadeInHeader);
+
+  //Cover
+  initAnimation();
 }
 
 //Header
@@ -76,7 +73,13 @@ function fadeInHeader() {
   }
 }
 
-//Internal Banner
-function intBannerPositioning() {
-  internalBanner.style.marginTop = siteHeader.clientHeight + "px";
+//Cover
+function initAnimation() {
+  let bgColor = coverBg.getAttribute("data-style");
+  setTimeout(() => {
+    coverBg.querySelector("img, video").style.opacity =
+      coverBg.classList.contains("overlay-applied") ? ".7" : "1";
+    coverBg.style.backgroundColor = bgColor;
+    coverBg.style.opacity = "1";
+  }, 600);
 }
