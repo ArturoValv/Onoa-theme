@@ -9,23 +9,22 @@ get_header();
 
     <div class="container">
 
-        <div class="content">
-            <div class="formatted-text">
-
-                <?php while (have_posts()) : the_post(); ?>
-
+        <?php while (have_posts()) : the_post(); ?>
+            <div class="content">
+                <?php if (!get_field('mostrar_portada')): ?>
+                    <h1> <?= get_the_title() ?> </h1>
+                <?php endif ?>
+                <div class="formatted-text">
                     <?php the_content() ?>
+                </div>
 
-                <?php endwhile;
-                wp_reset_postdata(); ?>
-
+                <?php
+                if (get_field('mostrar_barra_lateral')) {
+                    get_sidebar();
+                } ?>
             </div>
-
-            <?php
-            if (get_field('mostrar_barra_lateral')) {
-                get_sidebar();
-            } ?>
-        </div>
+        <?php endwhile;
+        wp_reset_postdata(); ?>
 
     </div>
 

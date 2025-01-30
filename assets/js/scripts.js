@@ -6,8 +6,10 @@ const menuItems = document.querySelectorAll(".main-menu .menu>.menu-item");
 const parentMenuItems = document.querySelectorAll(
   ".main-menu .menu-item-has-children"
 );
-const cover = document.querySelector(".cover-inner");
-const coverBg = document.querySelector(".cover-inner .cover-inner__bg");
+const coverInner= document.querySelector(".cover-inner");
+const coverBgInner = document.querySelector(
+  "body:not(.home) .cover-inner .cover-inner__bg"
+);
 
 document.addEventListener("DOMContentLoaded", () => {
   eventListeners();
@@ -28,7 +30,7 @@ function eventListeners() {
   window.addEventListener("scroll", fadeInHeader);
 
   //Cover
-  initAnimation();
+  coverBgInner && initAnimation();
 }
 
 //Header
@@ -66,7 +68,6 @@ function hideSubMenu() {
 
 function fadeInHeader() {
   if (window.scrollY > 0) {
-    console.log("scroll");
     siteHeader.classList.add("scrolling");
   } else {
     siteHeader.classList.remove("scrolling");
@@ -75,11 +76,11 @@ function fadeInHeader() {
 
 //Cover
 function initAnimation() {
-  let bgColor = coverBg.getAttribute("data-style");
+  let bgColor = coverBgInner.getAttribute("data-style");
   setTimeout(() => {
-    coverBg.querySelector("img, video").style.opacity =
-      coverBg.classList.contains("overlay-applied") ? ".7" : "1";
-    coverBg.style.backgroundColor = bgColor;
-    coverBg.style.opacity = "1";
+    coverBgInner.querySelector("img, video").style.opacity =
+      coverBgInner.classList.contains("overlay-applied") ? ".7" : "1";
+    coverBgInner.style.backgroundColor = bgColor;
+    coverBgInner.style.opacity = "1";
   }, 600);
 }

@@ -88,7 +88,7 @@ if (!function_exists('onoa_theme_setup')) {
 				),
 				array(
 					'name'  => __(
-						'Scondary Color',
+						'Secondary Color',
 						'onoa_theme'
 					),
 					'slug'  => 'secondary-color',
@@ -124,8 +124,7 @@ if (!function_exists('onoa_theme_setup')) {
 		register_nav_menus(
 			array(
 				'main_menu' => esc_html__('Main menu', 'onoa_theme'),
-				'first_footer_menu' => esc_html__('Footer menu 1', 'onoa_theme'),
-				'second_footer_menu' => esc_html__('Footer menu 2', 'onoa_theme'),
+				'footer_menu' => esc_html__('Footer menu', 'onoa_theme'),
 			)
 		);
 	}
@@ -163,15 +162,11 @@ function onoa_theme_scripts()
 			case "page-templates/template-homepage.php":
 				wp_enqueue_script('onoa-theme-template-home-js', get_template_directory_uri() . '/build/js/home-scripts.js', array(), '1.0', true);
 				break;
-			case "page-templates/template-portfolio.php":
-				wp_enqueue_style('onoa-theme-template-portfolio-css', get_template_directory_uri() . '/build/css/templates/template-portfolio.css', array(), '1.0', 'all');
-				wp_enqueue_script('onoa-theme-template-portfolio-js', get_template_directory_uri() . '/build/js/portfolio-scripts.js', array('onoa-theme-main-scripts'), '1.0', true);
-				break;
 		}
 	}
 
 	if (is_home() || is_archive() || is_single()) {
-		wp_enqueue_style('onoa-theme-home', get_template_directory_uri() . "/build/css/templates/home.css", array(), '1.0');
+		//wp_enqueue_style('onoa-theme-home', get_template_directory_uri() . "/build/css/templates/home.css", array(), '1.0');
 		wp_enqueue_style('onoa-theme-template-default', get_template_directory_uri() . '/build/css/templates/template-default.css', array(), '1.0');
 	}
 }
@@ -183,6 +178,21 @@ function onoa_theme_custom_excerpt_length($length)
 	return 25;
 }
 add_filter('excerpt_length', 'onoa_theme_custom_excerpt_length', 999);
+
+/* Widget Area */
+function sirsa_theme_widget_zones()
+{
+	register_sidebar(array(
+		'name' => 'Default Sidebar',
+		'id' => 'default_sidebar',
+		'before_widget' => '<div class="widget">',
+		'after_widget' => '</div>',
+		'before_title' => '<p class="text-center widget__title h5">',
+		'after_title' => '</p>'
+	));
+}
+
+add_action('widgets_init', 'sirsa_theme_widget_zones');
 
 // Custom Block Categories
 function onoa_blocks_category($categories, $post)

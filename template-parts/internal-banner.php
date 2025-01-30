@@ -16,7 +16,7 @@ $bg = $imagen_de_portada;
     <div class="cover-inner__content">
 
         <?php if ($mostrar_titulo): ?>
-            <h1 class="title"><?= get_the_title() ?></h1>
+            <<?= get_field('etiqueta_del_titulo') ?> class="title"> <?= get_the_title() ?> </<?= get_field('etiqueta_del_titulo') ?>>
         <?php endif ?>
 
     </div>

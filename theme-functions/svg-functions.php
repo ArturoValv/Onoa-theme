@@ -53,6 +53,36 @@ function wp_check_svg($file)
 }
 add_filter('wp_handle_upload_prefilter', 'wp_check_svg');
 
+function check_content_images($content)
+{
+    $pattern = '/<img\s[^>]*src=["\']([^"\']+)["\'][^>]*>/i';
+
+    $content = preg_replace_callback($pattern, function ($match) {
+        $src = $match[1];
+
+        if (strpos($src, home_url()) !== false) {
+            $src_local = str_replace(home_url('/'), ABSPATH, $src);
+        } else {
+            $src_local = $src;
+        }
+
+        if (file_exists($src_local)) {
+            $mime_type = mime_content_type($src_local);
+
+            if ($mime_type === 'image/svg+xml') {
+                $svg_contenido = file_get_contents($src_local);
+                return $svg_contenido !== false ? $svg_contenido : $match[0];
+            }
+        }
+
+        return $match[0];
+    }, $content);
+
+    return $content;
+}
+
+add_filter('the_content', 'check_content_images');
+
 function getSVGContents($image)
 {
 
