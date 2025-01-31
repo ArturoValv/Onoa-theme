@@ -6,14 +6,18 @@ const menuItems = document.querySelectorAll(".main-menu .menu>.menu-item");
 const parentMenuItems = document.querySelectorAll(
   ".main-menu .menu-item-has-children"
 );
-const coverInner= document.querySelector(".cover-inner");
+const coverInner = document.querySelector(".cover-inner");
 const coverBgInner = document.querySelector(
   "body:not(.home) .cover-inner .cover-inner__bg"
+);
+const extractedBlocks = document.querySelectorAll(
+  ".page-template-default .main-content .block"
 );
 
 document.addEventListener("DOMContentLoaded", () => {
   eventListeners();
   numerateMenuItems();
+  extractedBlocks && extractBlocks();
 });
 
 function eventListeners() {
@@ -83,4 +87,16 @@ function initAnimation() {
     coverBgInner.style.backgroundColor = bgColor;
     coverBgInner.style.opacity = "1";
   }, 600);
+}
+
+//Blocks
+function extractBlocks() {
+  extractedBlocks.forEach((item) => {
+    if (item.classList.contains("extract-block")) {
+      document
+        .querySelector(".site-footer")
+        .insertAdjacentHTML("beforebegin", item.outerHTML);
+      item.remove();
+    }
+  });
 }

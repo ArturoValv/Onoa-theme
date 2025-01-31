@@ -3,7 +3,7 @@ if (get_field('mostrar_bloque')):
     foreach (get_fields() as $key => $value) $$key = $value;
 ?>
 
-    <section class="block block-contact">
+    <section class="block block-contact <?= $extraer_bloque_del_contenido ? 'extract-block' : '' ?> ">
 
         <div class="block__inner">
 
