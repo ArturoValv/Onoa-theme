@@ -14,10 +14,23 @@ const extractedBlocks = document.querySelectorAll(
   ".page-template-default .main-content .block"
 );
 
+const sectionBlocks = document.querySelectorAll(
+  "body:not(.page-template-default) .block"
+);
+
 document.addEventListener("DOMContentLoaded", () => {
   eventListeners();
   numerateMenuItems();
   extractedBlocks && extractBlocks();
+  if (sectionBlocks) {
+    initSections();
+    isVisibleInViewport();
+  }
+});
+
+window.addEventListener("load", () => {
+  //Section Visibility
+  window.addEventListener("scroll", isVisibleInViewport);
 });
 
 function eventListeners() {
@@ -73,8 +86,10 @@ function hideSubMenu() {
 function fadeInHeader() {
   if (window.scrollY > 0) {
     siteHeader.classList.add("scrolling");
+    coverBgInner.classList.add("scrolling");
   } else {
     siteHeader.classList.remove("scrolling");
+    coverBgInner.classList.remove("scrolling");
   }
 }
 
@@ -97,6 +112,31 @@ function extractBlocks() {
         .querySelector(".site-footer")
         .insertAdjacentHTML("beforebegin", item.outerHTML);
       item.remove();
+    }
+  });
+}
+
+//Sections
+function initSections() {
+  sectionBlocks.forEach((section) => {
+    section.setAttribute("data-visibility", "hidden");
+  });
+}
+
+//Check section visibility on viewport
+function isVisibleInViewport() {
+  sectionBlocks.forEach((section) => {
+    let item = section.offsetTop;
+
+    if (
+      window.scrollY >=
+      item - siteHeader.clientHeight - 300
+      // &&
+      //item.bottom <= (window.innerHeight || document.clientHeight)
+      //&& item.left >= 0 &&
+      //item.right <= (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      section.setAttribute("data-visibility", "visible");
     }
   });
 }

@@ -16,6 +16,7 @@
 html {
   width: 100%;
   min-height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
@@ -45,18 +46,23 @@ body {
   box-sizing: inherit;
 }
 
-section {
+section.block {
   max-width: 100vw;
   content-visibility: auto;
   transition: 0.3s ease;
 
   &[data-visibility="hidden"] {
-    visibility: hidden;
-    opacity: 0;
+    background-color: #000;
+    & > * {
+      visibility: hidden;
+      opacity: 0;
+    }
   }
   &[data-visibility="visible"] {
-    visibility: visible;
-    opacity: 1;
+    & > * {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }
 
