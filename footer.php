@@ -56,6 +56,8 @@
                         <?php endif ?>
 
                     </div>
+
+                    <?= get_template_part("template-parts/social", "networks") ?>
                 </div>
 
             </div>

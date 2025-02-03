@@ -15,12 +15,12 @@
     margin: 0 auto;
     display: flex;
     @media (min-width: $ldpi) {
-      padding: 120px 0;
+      padding: 80px 0;
     }
   }
 
   &__copy {
-    padding: 1.5rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,6 +28,7 @@
     p,
     span,
     a {
+      font-size: 1.4rem;
       color: rgba(var(--primary-color), 1);
       text-align: center;
     }
@@ -82,6 +83,7 @@
       }
 
       &:last-child {
+        padding: 1.5rem 0 0 0;
         flex: calc(40% - 10rem);
         display: flex;
         flex-direction: column;
@@ -98,6 +100,39 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+          }
+        }
+      }
+
+      .social-networks {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        li {
+          width: 32px;
+          height: 32px;
+          display: flex;
+
+          a {
+            svg {
+              width: 100%;
+              height: 100%;
+              color: rgba(var(--secondary-color), 1);
+              fill: rgba(var(--secondary-color), 1);
+              stroke: rgba(var(--secondary-color), 1);
+              transition: .3s ease;
+            }
+
+            &:hover {
+              svg {
+                color: rgba(var(--primary-color), 1);
+                fill: rgba(var(--primary-color), 1);
+                stroke: rgba(var(--primary-color), 1);
+              }
+            }
           }
         }
       }
