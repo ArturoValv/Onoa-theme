@@ -2,9 +2,10 @@
 
 .single,
 .page {
-  background-color: rgb(var(--light-grey));
   .main-content {
     margin: 0;
+    padding: 60px 0;
+    background-color: rgb(var(--light-grey));
 
     h1{
       margin: 0 auto;

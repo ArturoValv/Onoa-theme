@@ -52,7 +52,6 @@ section.block {
   transition: 0.3s ease;
 
   &[data-visibility="hidden"] {
-    background-color: #000;
     & > * {
       visibility: hidden;
       opacity: 0;
