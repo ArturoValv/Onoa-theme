@@ -1,0 +1,93 @@
+@use "../../assets/scss/breakpoints" as *;
+
+.block-centered-content {
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(var(--light-grey), 1);
+
+  @media (min-width: $ldpi) {
+    padding: 120px 0;
+  }
+
+  &[data-visibility="visible"] {
+   .content{
+    opacity: 1;
+   }
+  }
+
+  .block__inner {
+    max-width: 1800px;
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    max-width: 920px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    opacity: 0;
+    transition: .5s ease-in-out;
+
+    .block-title {
+      font-family: var(--adore);
+      font-size: 8.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: uppercase;
+
+      @media (max-width: 1023px) {
+        font-size: 36px;
+      }
+    }
+
+    .block-menu {
+      width: 80%;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+
+        li {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          a {
+            padding: 2.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--montserrat);
+            font-size: 1.8rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: rgba(var(--text-color), 1);
+            transition: 0.3s ease;
+
+            &:hover {
+              color: rgba(var(--secondary-color), 1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

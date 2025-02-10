@@ -244,7 +244,28 @@ function onoa_theme_register_acf_block_types()
 		'mode'				=> 'edit',
 		'enqueue_assets' => function () {
 			wp_enqueue_style('block-contact-css', get_template_directory_uri() . '/blocks/contact/block.css', array(), '1.0');
-			//wp_enqueue_script('block-contact-js', get_template_directory_uri() . '/blocks/contact/block.js', array(), '1.0', true);
+		},
+	));
+	acf_register_block_type(array(
+		'name'              => 'Bloque – Galería Mosaico',
+		'title'             => __('Bloque – Galería Mosaico'),
+		'render_template'   => '/blocks/gallery/block.php',
+		'category'          => 'onoa-blocks',
+		'icon'              => 'welcome-write-blog',
+		'mode'				=> 'edit',
+		'enqueue_assets' => function () {
+			wp_enqueue_style('block-gallery-css', get_template_directory_uri() . '/blocks/gallery/block.css', array(), '1.0');
+		},
+	));
+	acf_register_block_type(array(
+		'name'              => 'Bloque – Contenido Centrado',
+		'title'             => __('Bloque – Contenido Centrado'),
+		'render_template'   => '/blocks/centered-content/block.php',
+		'category'          => 'onoa-blocks',
+		'icon'              => 'welcome-write-blog',
+		'mode'				=> 'edit',
+		'enqueue_assets' => function () {
+			wp_enqueue_style('block-centered-content-css', get_template_directory_uri() . '/blocks/centered-content/block.css', array(), '1.0');
 		},
 	));
 }

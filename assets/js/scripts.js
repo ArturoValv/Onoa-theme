@@ -44,7 +44,7 @@ function eventListeners() {
     });
   });
 
-  window.addEventListener("scroll", fadeInHeader);
+  if (document.querySelector(".site-header.sticky")) window.addEventListener("scroll", fadeInHeader);
 
   //Cover
   coverBgInner && initAnimation();
