@@ -221,7 +221,6 @@ function onoa_theme_register_acf_block_types()
 		'mode'				=> 'edit',
 		'enqueue_assets' => function () {
 			wp_enqueue_style('block-three-cols-css', get_template_directory_uri() . '/blocks/three-cols/block.css', array(), '1.0');
-			wp_enqueue_script('block-three-cols-js', get_template_directory_uri() . '/blocks/three-cols/block.js', array(), '1.0', true);
 		},
 	));
 	acf_register_block_type(array(

@@ -14,7 +14,7 @@ const extractedBlocks = document.querySelectorAll(
   ".page-template-default .main-content .block"
 );
 
-const sectionBlocks = document.querySelectorAll("body .block");
+let sectionBlocks = document.querySelectorAll("body .block");
 
 document.addEventListener("DOMContentLoaded", () => {
   numerateMenuItems();
@@ -124,7 +124,6 @@ function extractBlocks() {
       item.remove();
     }
   });
-  
 }
 
 //Sections
@@ -136,6 +135,9 @@ function initSections() {
 
 //Check section visibility on viewport
 function isVisibleInViewport() {
+  
+  if (extractBlocks) sectionBlocks = document.querySelectorAll("body .block");
+
   sectionBlocks.forEach((section) => {
     let item = section.offsetTop;
 
@@ -147,6 +149,7 @@ function isVisibleInViewport() {
       //&& item.left >= 0 &&
       //item.right <= (window.innerWidth || document.documentElement.clientWidth)
     ) {
+      console.log("visible");
       section.setAttribute("data-visibility", "visible");
     }
   });
