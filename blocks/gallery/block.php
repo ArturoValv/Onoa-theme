@@ -6,7 +6,7 @@ if (get_field('mostrar_bloque')):
     if ($columnas < 3) $columnas = 3;
 ?>
 
-    <section class="block block-gallery <?= $extraer_bloque_del_contenido ? 'extract-block' : '' ?>" style="--columns: <?= $columnas ?>; --gallery-size : <?= count($galeria) ?>;">
+    <section class="block block-gallery <?= $extraer_bloque_del_contenido ? 'extract-block' : '' ?>" style="--columns: <?= $columnas ?>; --gallery-size: <?= count($galeria) ?>;">
 
         <div class="gallery">
             <?php

@@ -14,18 +14,16 @@ const extractedBlocks = document.querySelectorAll(
   ".page-template-default .main-content .block"
 );
 
-const sectionBlocks = document.querySelectorAll(
-  "body:not(.page-template-default) .block"
-);
+const sectionBlocks = document.querySelectorAll("body .block");
 
 document.addEventListener("DOMContentLoaded", () => {
-  eventListeners();
   numerateMenuItems();
   extractedBlocks && extractBlocks();
   if (sectionBlocks) {
     initSections();
     isVisibleInViewport();
   }
+  eventListeners();
 });
 
 window.addEventListener("load", () => {
@@ -44,7 +42,8 @@ function eventListeners() {
     });
   });
 
-  if (document.querySelector(".site-header.sticky")) window.addEventListener("scroll", fadeInHeader);
+  if (document.querySelector(".site-header.sticky"))
+    window.addEventListener("scroll", fadeInHeader);
 
   //Cover
   coverBgInner && initAnimation();
@@ -130,7 +129,7 @@ function isVisibleInViewport() {
 
     if (
       window.scrollY >=
-      item - siteHeader.clientHeight - 1000
+      item - siteHeader.clientHeight - 300
       // &&
       //item.bottom <= (window.innerHeight || document.clientHeight)
       //&& item.left >= 0 &&
