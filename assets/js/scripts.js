@@ -105,14 +105,26 @@ function initAnimation() {
 
 //Blocks
 function extractBlocks() {
+  let referenceSection;
+  let newPosition;
+
+  if (document.querySelector(".site-footer")) {
+    referenceSection = document.querySelector(".site-footer");
+    newPosition = "beforebegin";
+  }
+
+  if (document.querySelector(".main-content")) {
+    referenceSection = document.querySelector(".main-content");
+    newPosition = "afterend";
+  }
+
   extractedBlocks.forEach((item) => {
     if (item.classList.contains("extract-block")) {
-      document
-        .querySelector(".site-footer")
-        .insertAdjacentHTML("beforebegin", item.outerHTML);
+      referenceSection.insertAdjacentHTML(newPosition, item.outerHTML);
       item.remove();
     }
   });
+  
 }
 
 //Sections
