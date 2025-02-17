@@ -130,7 +130,7 @@ function isVisibleInViewport() {
 
     if (
       window.scrollY >=
-      item - siteHeader.clientHeight - 300
+      item - siteHeader.clientHeight - 1000
       // &&
       //item.bottom <= (window.innerHeight || document.clientHeight)
       //&& item.left >= 0 &&
