@@ -7,7 +7,7 @@ if (get_field('mostrar_bloque')):
 
         <div class="block__inner">
 
-            <div class="content">
+            <div class="block-content">
 
                 <<?= $etiqueta_del_titulo ?> class="block-title txt-center"><?= $titulo ?></<?= $etiqueta_del_titulo ?>>
 
