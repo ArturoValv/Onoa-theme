@@ -16,13 +16,15 @@ if (get_field('mostrar_bloque')):
 
                 <div class="pic" style="--pic-index: <?= $i ?>">
 
-                    <a href="<?= $pic['enlace'] ?>" class="link">
+                    <?= $pic['enlace'] ? '<a href="' . $pic['enlace'] . '" class="link">' : '<div class="link">' ?>
 
-                        <img src="<?= $pic['imagen']['url'] ?>" alt="<?= $pic['imagen']['alt'] ?>">
+                    <img src="<?= $pic['imagen']['url'] ?>" alt="<?= $pic['imagen']['alt'] ?>">
 
+                    <?php if ($pic['titulo']): ?>
                         <p class="title"><?= $pic['titulo'] ?></p>
+                    <?php endif ?>
 
-                    </a>
+                    <?= $pic['enlace'] ? '</a>' : '</div>' ?>
 
                 </div>
 
